@@ -59,7 +59,6 @@ public class Main {
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
                     break;
-
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -158,6 +157,7 @@ public class Main {
     private static void contactGivenNumber(Scanner in, ContactBook cBook) {
         int phone;
         phone = in.nextInt();
+        in.nextLine();
         String contact;
         //System.out.println("entsGDi");
         contact = cBook.getContact(phone);
