@@ -60,6 +60,11 @@ public class ContactBook {
         contacts[searchIndex(name)].setEmail(email);
     }
 
+    public String getContact(int phone){
+        if (auxSearchIndex(phone) == -1) return null;
+        else return contacts[auxSearchIndex(phone)].getName();
+    }
+
     private int searchIndex(String name) {
         int i = 0;
         int result = -1;
@@ -70,6 +75,22 @@ public class ContactBook {
             else
                 i++;
         if (found) result = i;
+        return result;
+    }
+
+    private int auxSearchIndex(int phone) {
+        //System.out.println("entrei aux");
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        while (i<counter && !found) {
+            if (contacts[i].getPhone() == phone){
+                result = i;
+                found = true;
+            }
+            i++;
+        }
+        //System.out.println("sai aux");
         return result;
     }
 
