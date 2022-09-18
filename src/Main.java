@@ -16,6 +16,7 @@ public class Main {
     public static final String LIST_CONTACTS  = "LC";
     public static final String CONTACT_NUMBER = "GN";
     public static final String QUIT           = "Q";
+    public static final String REPEATED_PHONES      = "EP";
 
     //Constantes que definem as mensagens para o utilizador
     public static final String CONTACT_EXISTS = "contactBook.Contact already exists.";
@@ -27,6 +28,8 @@ public class Main {
     public static final String QUIT_MSG = "Goodbye!";
     public static final String COMMAND_ERROR = "Unknown command.";
     private static final String CONTACT_NOT_EXIST = "Phone number does not exist.";
+    private static final String ALL_DIFF_NUMBERS = "All contacts have different phone numbers.";
+    private static final String EXISTS_REPEATED = "There are contacts that share phone numbers.";
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -59,6 +62,9 @@ public class Main {
                 case LIST_CONTACTS:
                     listAllContacts(cBook);
                     break;
+                case REPEATED_PHONES:
+                    repeatedPhone(in,cBook);
+                    break;
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -68,6 +74,32 @@ public class Main {
         System.out.println(QUIT_MSG);
         System.out.println();
         in.close();
+    }
+
+    private static void repeatedPhone(Scanner in, ContactBook cBook) {
+        if(cBook.getNumberOfContacts()==0){
+            System.out.println(ALL_DIFF_NUMBERS);
+        } else {
+            int count = 0;
+            while(count< cBook.getNumberOfContacts()){
+                int c = -1;
+                cBook.initializeIterator();
+                for(int i = 0; i<=count;i++){
+                     c = cBook.next().getPhone();
+                }
+                while(cBook.hasNext()){
+                    int c2 = cBook.next().getPhone();
+                    if(c == c2){
+                        System.out.println(EXISTS_REPEATED);
+                        return;
+                    }
+                }
+                count++;
+        }
+            System.out.println(ALL_DIFF_NUMBERS);
+
+        }
+
     }
 
     private static String getCommand(Scanner in) {

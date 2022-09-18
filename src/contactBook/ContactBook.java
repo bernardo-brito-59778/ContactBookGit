@@ -94,7 +94,6 @@ public class ContactBook {
         //System.out.println("sai aux");
         return result;
     }
-
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
@@ -114,5 +113,6 @@ public class ContactBook {
     public Contact next() {
         return contacts[currentContact++];
     }
+
 
 }
