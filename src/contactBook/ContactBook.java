@@ -62,8 +62,8 @@ public class ContactBook {
     }
 
     public String getContact(int phone){
-        if (auxSearchIndex(phone) == -1) return null;
-        else return contacts[auxSearchIndex(phone)].getName();
+        if (auxSearchIndex2(phone) == -1) return null;
+        else return contacts[auxSearchIndex2(phone)].getName();
     }
 
     private int searchIndex(String name) {
@@ -71,16 +71,26 @@ public class ContactBook {
         int result = -1;
         boolean found = false;
         while (i<counter && !found)
-            if (contacts[i].getName().equals(name))
+            if (contacts[i].getName().equals(name)) {
                 found = true;
+            }
             else
                 i++;
         if (found) result = i;
         return result;
     }
-
+    /*
     private int auxSearchIndex(int phone) {
-        //System.out.println("entrei aux");
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        for
+
+
+        return result;
+    }
+*/
+    private int auxSearchIndex2(int phone) {
         int i = 0;
         int result = -1;
         boolean found = false;
@@ -91,9 +101,9 @@ public class ContactBook {
             }
             i++;
         }
-        //System.out.println("sai aux");
         return result;
     }
+
     private void resize() {
         Contact tmp[] = new Contact[2*contacts.length];
         for (int i=0;i<counter; i++)
