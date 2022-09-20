@@ -63,7 +63,7 @@ public class Main {
                     listAllContacts(cBook);
                     break;
                 case REPEATED_PHONES:
-                    repeatedPhone(in,cBook);
+                    repeatedPhone(cBook);
                     break;
                 default:
                     System.out.println(COMMAND_ERROR);
@@ -76,7 +76,7 @@ public class Main {
         in.close();
     }
 
-    private static void repeatedPhone(Scanner in, ContactBook cBook) {
+    private static void repeatedPhone(ContactBook cBook) {
         if(cBook.getNumberOfContacts()==0){
             System.out.println(ALL_DIFF_NUMBERS);
         } else {
