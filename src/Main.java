@@ -191,9 +191,7 @@ public class Main {
         phone = in.nextInt();
         in.nextLine();
         String contact;
-        //System.out.println("entsGDi");
         contact = cBook.getContact(phone);
-        //System.out.println("entrei");
         if(contact != null){
             System.out.println(contact);
         }
